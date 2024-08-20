@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fdf.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/11 15:02:43 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/16 16:15:35 by tbabou           ###   ########.fr       */
+/*   Created: 2024/06/15 14:28:29 by lumaret           #+#    #+#             */
+/*   Updated: 2024/08/20 15:35:54 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,9 @@
 typedef struct s_fdf
 {
 	char	**map;
-	void	*mlx;
-	void	*win;
-	void	*img;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*img_ptr;
 	void	*addr;
 	int		*map_size;
 	int		bpp;
@@ -77,8 +77,8 @@ typedef struct s_line
 }			t_line;
 
 int			get_arr_length(char *line, t_fdf *fdf);
-int			draw_point(t_fdf *fdf);
-int			*projection(t_fdf *fdf, int x, int y, int z);
+int			draw(t_fdf *fdf);
+int			*iso_proj(t_fdf *fdf, int x, int y, int z);
 char		**init_parsing(t_fdf *fdf, char *file_name);
 void		init_everything(char *map, t_fdf *fdf);
 void		free_map(char **map);
@@ -86,23 +86,15 @@ void		free_splits(char ***splits, int size);
 void		free_mlx(t_fdf *fdf);
 void		redraw(t_fdf *fdf);
 int			*map_checker(t_fdf *fdf, char **map);
-void		set_values(t_fdf *fdf);
-// IN TESTING
+void		set(t_fdf *fdf);
 int			get_x(t_fdf *fdf, int x);
 int			get_y(t_fdf *fdf, int y, int scale);
-
-// DRAWING FUNCTIONS
 void		draw_vertical(t_fdf *fdf);
 void		draw_horizontal(t_fdf *fdf, char **split, int y1);
-
-// MOVEMENT FUNCTIONS
 void		iso_movement(t_fdf *fdf, int direction);
 void		zoom_handler(t_fdf *fdf, int direction);
-void		change_z_value(t_fdf *fdf, int key);
-
+void		change_z(t_fdf *fdf, int key);
 void		malloc_exit(t_fdf *fdf);
-
-// NEED TO BE REMOVED
 void		drawline(t_fdf *fdf, int *start, int *end);
 
 #endif

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 13:57:08 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/16 15:52:44 by tbabou           ###   ########.fr       */
+/*   Created: 2024/06/20 14:18:04 by lumaret           #+#    #+#             */
+/*   Updated: 2024/08/20 14:35:34 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 void	free_mlx(t_fdf *fdf)
 {
-	if (fdf->mlx != NULL && fdf->win != NULL)
-		mlx_destroy_window(fdf->mlx, fdf->win);
-	if (fdf->img != NULL)
-		mlx_destroy_image(fdf->mlx, fdf->img);
-	if (fdf->mlx != NULL)
+	if (fdf->mlx_ptr != NULL && fdf->win_ptr != NULL)
+		mlx_destroy_window(fdf->mlx_ptr, fdf->win_ptr);
+	if (fdf->img_ptr != NULL)
+		mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);
+	if (fdf->mlx_ptr != NULL)
 	{
-		mlx_destroy_display(fdf->mlx);
-		free(fdf->mlx);
+		mlx_destroy_display(fdf->mlx_ptr);
+		free(fdf->mlx_ptr);
 	}
 	if (fdf->map != NULL)
 		free_map(fdf->map);

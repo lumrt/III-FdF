@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   drawing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 17:38:34 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/16 16:15:32 by tbabou           ###   ########.fr       */
+/*   Created: 2024/06/18 14:16:53 by lumaret           #+#    #+#             */
+/*   Updated: 2024/08/20 15:50:58 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../fdf.h"
 
-int	draw_point(t_fdf *fdf)
+int	draw(t_fdf *fdf)
 {
 	int		i;
 	int		y1;
@@ -20,11 +20,11 @@ int	draw_point(t_fdf *fdf)
 
 	i = 0;
 	y1 = 0;
-	mlx_clear_window(fdf->mlx, fdf->win);
-	if (fdf->img)
-		mlx_destroy_image(fdf->mlx, fdf->img);
-	fdf->img = mlx_new_image(fdf->mlx, fdf->win_width, fdf->win_height);
-	fdf->addr = mlx_get_data_addr(fdf->img, &fdf->bpp, &fdf->ll, &fdf->endian);
+	mlx_clear_window(fdf->mlx_ptr, fdf->win_ptr);
+	if (fdf->img_ptr)
+		mlx_destroy_image(fdf->mlx_ptr, fdf->img_ptr);
+	fdf->img_ptr = mlx_new_image(fdf->mlx_ptr, fdf->win_width, fdf->win_height);
+	fdf->addr = mlx_get_data_addr(fdf->img_ptr, &fdf->bpp, &fdf->ll, &fdf->endian);
 	while (fdf->map[i] != NULL)
 	{
 		y1 += BASE_SCALE + fdf->scale;
@@ -37,7 +37,7 @@ int	draw_point(t_fdf *fdf)
 		i++;
 	}
 	draw_vertical(fdf);
-	mlx_put_image_to_window(fdf->mlx, fdf->win, fdf->img, 0, 0);
+	mlx_put_image_to_window(fdf->mlx_ptr, fdf->win_ptr, fdf->img_ptr, 0, 0);
 	return (0);
 }
 
@@ -52,9 +52,9 @@ void	draw_vertical_line(t_fdf *fdf, char ***splits, int horizontal, int x1)
 	vertical = 0;
 	while (vertical <= fdf->map_size[1] - 2)
 	{
-		coords1 = projection(fdf, get_x(fdf, x1), get_y(fdf, vertical, 1),
+		coords1 = iso_proj(fdf, get_x(fdf, x1), get_y(fdf, vertical, 1),
 				ft_atoi(splits[vertical][horizontal]) * z1);
-		coords2 = projection(fdf, get_x(fdf, x1), get_y(fdf, vertical + 1, 1),
+		coords2 = iso_proj(fdf, get_x(fdf, x1), get_y(fdf, vertical + 1, 1),
 				ft_atoi(splits[vertical + 1][horizontal]) * z1);
 		drawline(fdf, coords1, coords2);
 		vertical++;
@@ -98,6 +98,8 @@ void	draw_vertical(t_fdf *fdf)
 	free_splits(splits, fdf->map_size[1]);
 }
 
+
+
 void	draw_horizontal(t_fdf *fdf, char **split, int y1)
 {
 	int	*coords1;
@@ -109,9 +111,9 @@ void	draw_horizontal(t_fdf *fdf, char **split, int y1)
 	i = 0;
 	while (split[i + 1] != NULL)
 	{
-		coords1 = projection(fdf, get_x(fdf, i), get_y(fdf, y1, 0),
+		coords1 = iso_proj(fdf, get_x(fdf, i), get_y(fdf, y1, 0),
 				ft_atoi(split[i]) * z1);
-		coords2 = projection(fdf, get_x(fdf, i + 1), get_y(fdf, y1, 0),
+		coords2 = iso_proj(fdf, get_x(fdf, i + 1), get_y(fdf, y1, 0),
 				ft_atoi(split[i + 1]) * z1);
 		drawline(fdf, coords1, coords2);
 		i++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/21 17:31:30 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/14 16:48:21 by tbabou           ###   ########.fr       */
+/*   Created: 2024/06/20 14:18:22 by lumaret           #+#    #+#             */
+/*   Updated: 2024/08/20 15:35:44 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	zoom_handler(t_fdf *fdf, int direction)
 		fdf->scale -= 1;
 }
 
-void	change_z_value(t_fdf *fdf, int key)
+void	change_z(t_fdf *fdf, int key)
 {
 	if (key == PAGE_UP)
 		fdf->z += 1;

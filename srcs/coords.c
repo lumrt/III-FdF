@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   coords.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tbabou <tbabou@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/23 15:21:59 by tbabou            #+#    #+#             */
-/*   Updated: 2024/08/16 12:23:42 by tbabou           ###   ########.fr       */
+/*   Created: 2024/06/20 14:16:30 by lumaret           #+#    #+#             */
+/*   Updated: 2024/08/20 15:49:43 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	get_y(t_fdf *fdf, int y, int scale)
 		return (fdf->start_y + y + fdf->y);
 }
 
-int	*projection(t_fdf *fdf, int x, int y, int z)
+int	*iso_proj(t_fdf *fdf, int x, int y, int z)
 {
 	int	*coord;
 
