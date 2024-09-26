@@ -6,7 +6,7 @@
 /*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 14:17:57 by lumaret           #+#    #+#             */
-/*   Updated: 2024/08/21 17:34:55 by lumaret          ###   ########.fr       */
+/*   Updated: 2024/09/25 15:47:13 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,7 +98,6 @@ int	*map_checker(t_fdf *fdf, char **map)
 	map_size = malloc(sizeof(int) * 2);
 	if (!map_size)
 		malloc_exit(fdf);
-	current_line = 0;
 	first_line = get_arr_length(map[0], fdf);
 	y = 1;
 	while (y < fdf->map_height)
@@ -107,7 +106,7 @@ int	*map_checker(t_fdf *fdf, char **map)
 			break ;
 		current_line = get_arr_length(map[y], fdf);
 		if (current_line != first_line)
-			return (NULL);
+			return (free(map_size), NULL);
 		y++;
 	}
 	map_size[0] = first_line;

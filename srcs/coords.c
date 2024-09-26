@@ -6,7 +6,7 @@
 /*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/20 14:16:30 by lumaret           #+#    #+#             */
-/*   Updated: 2024/08/21 17:35:25 by lumaret          ###   ########.fr       */
+/*   Updated: 2024/09/25 15:31:22 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	*iso_proj(t_fdf *fdf, int x, int y, int z)
 	coord = malloc(sizeof(int) * 2);
 	if (!coord)
 		malloc_exit(fdf);
-	coord[0] = (x - y) * cos(0.523599);
-	coord[1] = -z + (x + y) * sin(0.523599);
+	coord[0] = (x - y) * 0.866025;
+	coord[1] = -z + (x + y) * 0.5;
 	return (coord);
 }

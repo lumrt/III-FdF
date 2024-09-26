@@ -6,7 +6,7 @@
 /*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/15 14:28:29 by lumaret           #+#    #+#             */
-/*   Updated: 2024/08/27 18:16:20 by lumaret          ###   ########.fr       */
+/*   Updated: 2024/09/25 15:30:58 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,5 +95,6 @@ void		zoom_handler(t_fdf *fdf, int direction);
 void		change_z(t_fdf *fdf, int key);
 void		malloc_exit(t_fdf *fdf);
 void		drawline(t_fdf *fdf, int *start, int *end);
+void		my_pixel_put_img(t_fdf *fdf, int x, int y);
 
 #endif

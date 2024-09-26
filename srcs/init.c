@@ -6,7 +6,7 @@
 /*   By: lumaret <lumaret@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/18 14:17:24 by lumaret           #+#    #+#             */
-/*   Updated: 2024/08/27 18:18:36 by lumaret          ###   ########.fr       */
+/*   Updated: 2024/09/25 15:49:30 by lumaret          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	set(t_fdf *fdf)
 	fdf->mlx_ptr = NULL;
 	fdf->win_ptr = NULL;
 	fdf->img = NULL;
-	fdf->win_width = 1200;
-	fdf->win_height = 800;
+	fdf->win_width = 1920;
+	fdf->win_height = 1080;
 	fdf->x = 0;
 	fdf->y = 0;
 	fdf->z = 0;
